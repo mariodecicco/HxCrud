@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<head>
+    <title>Users</title>
+</head>
+    
+<body>
+    <h3>List users</h3>
+    <h:form rendered="#{not empty userService.users}">
+        <h:dataTable value="#{userService.users}" var="item">
+            <h:column><f:facet name="header">ID</f:facet>#{item.id}</h:column>
+            <h:column><f:facet name="header">Forename</f:facet>#{item.forename}</h:column>
+            <h:column><f:facet name="header">Surname</f:facet>#{item.surname}</h:column>
+            <h:column><f:facet name="header">Email</f:facet>#{item.email}</h:column>
+            <h:column><f:facet name="header">Date Created</f:facet>#{item.dateCreated}</h:column>
+            <h:column><h:commandButton value="edit" action="#{userService.editUser(item)}"/></h:column>
+            <h:column><h:commandButton value="delete" action="#{userService.deleteUser(item)}"/></h:column>
+        </h:dataTable>
+    </h:form>
+    
+    <h:panelGroup rendered="#{empty userService.users}">
+        <p>No users! Please add users.</p>
+    </h:panelGroup>
+    
+    <h:panelGroup>
+        <h3>Add User</h3>
+        <h:form>
+            <p>Forename: <h:inputText value="#{userService.user.forename}" /></p>
+            <p>Surname: <h:inputText value="#{userService.user.surname}" /></p>
+            <p>Email: <h:inputText value="#{userService.user.email}" /> </p>
+            <p>
+                <h:commandButton value="add" action="#{userService.addUser}" 
+                                 rendered="#{not userService.editUser}"/>
+                <h:commandButton value="update" action="#{userService.updateUser}"
+                                 rendered="#{userService.editUser}"/>
+                <h:commandButton value="cancel" action="#{userService.cancelUser}" />
+            </p>
+        </h:form>
+    </h:panelGroup>
+</body>
+</html>

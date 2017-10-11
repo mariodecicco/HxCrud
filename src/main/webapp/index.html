@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HX CRUD</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h1>Welcome</h1>
+        <p>
+            Use the link below for a web page that can be used for 'User' data entry
+        </p>
+        <a href="user.xhtml">Click for Users Entry form</a>
+        <p>
+            To use the API please use the following<br/>
+            GET http://[URL]/HxCrud/rest/users - returns a full list of users in XML format<br/>
+            GET http://[URL]/HxCrud/rest/users/[id] - return user information for the id provided<br/>
+            PUT http://[URL]/HxCrud/rest/users/ - pass in XML user and will update the user with data provided - returns full list of users<br/>
+            DELETE http://[URL]/HxCrud/rest/users/[id] - deletes the user provided from the list<br/>
+            POST http://[URL]/HxCrud/rest/users/ - pass in XML user to add
+        </p>
+    </body>
+</html>
